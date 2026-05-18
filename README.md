@@ -1,4 +1,4 @@
-# 🚢 Titanic Survival Predictor (FastAPI + XGBoost + Glassmorphism UI)
+# 🚢 Titanic Survival Predictor
 > **A fully integrated Machine Learning system to predict Titanic survival passenger fate with high-accuracy modeling and a premium web application interface.**
 
 ---
