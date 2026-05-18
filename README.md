@@ -210,6 +210,38 @@ Accepts a JSON list containing up to 100 passengers to run automated batch predi
 
 ---
 
+## 🌐 Production Deployment (100% Free: Hugging Face Spaces & Netlify)
+
+To host your full-stack Machine Learning project completely **for free, with 24/7 availability (no sleep time or credit card required)**, use this modern decoupled strategy:
+
+### 1. Backend API Deployment (Hugging Face Spaces - Docker)
+Hugging Face Spaces provides high-performance, 24/7 free containers, making it the perfect home for Python ML APIs:
+1. Sign up/Log in to [Hugging Face](https://huggingface.co/).
+2. Click on your profile picture in the top-right and select **New Space**.
+3. Configure your Space:
+   - **Space Name:** `titanic-predictor-api` (or any name you like)
+   - **SDK:** Select **Docker** (very important).
+   - **Template:** Select **Blank** (under Docker templates).
+   - **Visibility:** Public.
+4. Click **Create Space**.
+5. Hugging Face will create a repository. Since we already created the [Dockerfile](file:///d:/Task5/Dockerfile) and [requirements.txt](file:///d:/Task5/requirements.txt) in this project, you can simply upload all files here to your new Hugging Face Space repository (via their web interface or Git).
+6. Hugging Face will automatically build and run the Docker container.
+7. Once built, click on the **three dots (...)** in the top-right of your Space page, select **Embed this Space**, and copy your Direct URL (e.g., `https://saged00-titanic-predictor-api.hf.space`).
+
+### 2. Frontend Configuration & Netlify Deployment
+1. Open [static/script.js](file:///d:/Task5/static/script.js) and update the `API_BASE_URL` at the top of the file with your Hugging Face Space Direct URL (without a trailing slash):
+   ```javascript
+   const API_BASE_URL = "https://saged00-titanic-predictor-api.hf.space";
+   ```
+2. Save, commit, and push your changes to GitHub.
+3. Sign up/Log in to [Netlify](https://www.netlify.com/) using your GitHub account.
+4. Click **Add New Site** -> **Import from Git** -> Select your **Titanic_Dataset** repository.
+5. In the Build settings:
+   - **Publish Directory:** Set to `static` (important: this hosts only your premium UI files).
+6. Click **Deploy Site**. Netlify will host your Glassmorphism frontend on a blazing-fast global CDN!
+
+---
+
 ## 👨‍💻 Developer & Author
 
 <p align="left">
