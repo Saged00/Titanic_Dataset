@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 🚀 BACKEND API CONFIGURATION
+    // Change this to your deployed Render/Railway backend URL once deployed (e.g., "https://your-backend.onrender.com")
+    // Keep it as an empty string "" to use the local FastAPI server during development.
+    const API_BASE_URL = "";
+
     const form = document.getElementById('prediction-form');
     const ageInput = document.getElementById('age');
     const ageVal = document.getElementById('age-val');
@@ -40,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         predictBtn.disabled = true;
 
         try {
-            const res = await fetch('/predict', {
+            const res = await fetch(`${API_BASE_URL}/predict`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
