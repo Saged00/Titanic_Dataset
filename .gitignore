@@ -1,0 +1,23 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python bytecode and caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
