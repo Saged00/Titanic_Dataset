@@ -9,23 +9,57 @@ On April 15, 1912, the luxury passenger liner RMS Titanic sank after colliding w
 
 ---
 
-## 🛠️ Project Architecture
+## 🛠️ Project Architecture & Data Flow
 
-The system is engineered in a decoupled, layered architecture:
-1. **Data Science & ML Pipeline (`Titanic.ipynb`)**: Performs Exploratory Data Analysis (EDA), missing value imputation, advanced feature engineering, hyperparameter tuning with `GridSearchCV`, and model serialization.
-2. **Backend API (`main.py`)**: Built with **FastAPI**, serving high-performance, robust, type-safe validation (using **Pydantic**) for single and batch predictions.
-3. **Premium Web Interface (`static/`)**: A state-of-the-art Single Page Application (SPA) designed with absolute visual excellence. Features glassmorphism cards, glowing ambient light orbs, CSS keyframe micro-animations, and full mobile responsiveness.
+The system is engineered using a decoupled, high-performance three-tier architecture that separates data processing, service delivery, and interface representation:
 
 ```mermaid
 graph TD
-    A[Titanic-Dataset.csv] -->|EDA & Preprocessing| B[Titanic.ipynb]
-    B -->|Feature Engineering & GridSearch| C[XGBoost Trained Model]
-    C -->|Saved Pickle| D[titanic_model.pkl]
-    D -->|Loaded by FastAPI| E[main.py Backend]
-    E -->|Serve JSON API| F[Web Client / UI]
-    F -->|User Input| E
-    E -->|Fast Prediction| F
+    %% Define Styles
+    classDef datasource fill:#2c3e50,stroke:#34495e,stroke-width:2px,color:#fff;
+    classDef training fill:#27ae60,stroke:#2ecc71,stroke-width:2px,color:#fff;
+    classDef model fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff;
+    classDef backend fill:#2980b9,stroke:#3498db,stroke-width:2px,color:#fff;
+    classDef frontend fill:#8e44ad,stroke:#9b59b6,stroke-width:2px,color:#fff;
+
+    %% Define Nodes
+    A[("📂 Titanic Dataset<br>(Titanic-Dataset.csv)")]:::datasource
+    B["🧪 Jupyter Notebook ML Pipeline<br>(Titanic.ipynb)"]:::training
+    C["💾 Serialized XGBoost Artifact<br>(titanic_model.pkl)"]:::model
+    D["⚡ FastAPI Backend Service<br>(main.py)"]:::backend
+    E["🎨 Premium Glassmorphism UI<br>(static/index.html)"]:::frontend
+
+    %% Define Connections
+    A -->|1. Raw Ingestion & EDA| B
+    B -->|2. GridSearch & Training| C
+    C -->|3. Model Deserialization| D
+    E -->|4. Async Prediction Request| D
+    D -->|5. Real-time Inference Payload| E
+
+    %% Graph Link Styles
+    linkStyle 0,1,2,3,4 stroke:#7f8c8d,stroke-width:2px,stroke-dasharray: 3;
 ```
+
+### 🏛️ System Layers
+
+#### 📊 1. Data Science & ML Pipeline (`Titanic.ipynb`)
+Responsible for the core intelligence of the system.
+* **EDA & Preprocessing**: Handles class balance verification, outlier mitigation, and missing value imputation.
+* **Feature Engineering**: Constructs `AgeBand`, `FareBand`, `Title`, and unified `FamilySize` attributes.
+* **Model Training**: Leverages a grid-search optimized **XGBoost Classifier** with Stratified 5-Fold Cross-Validation.
+* **Serialization**: Dumps the calibrated model, custom label encoders, and feature scalers into a unified `joblib` pickle file.
+
+#### ⚡ 2. Backend API Service (`main.py`)
+A fast, asynchronous, type-safe API server constructed with **FastAPI**.
+* **Data Validation**: Enforces request schema validation through **Pydantic** models.
+* **Real-Time Inference**: Deserializes the XGBoost model at startup, processes input payloads, applies runtime scaling, and yields predictions in milliseconds.
+* **Batch Processing**: Provides a `/predict/batch` endpoint supporting high-speed batch survival requests.
+
+#### 🎨 3. Premium Web Interface (`static/`)
+A highly responsive, beautifully designed Single Page Application (SPA).
+* **Glassmorphism Design**: Features frosted background cards with custom HSL borders and modern typography.
+* **Fluid Micro-Animations**: Employs CSS keyframe loops and active hover transitions for an interactive feel.
+* **Responsive Fluidity**: Engineered using CSS Grid and Flexbox layouts, rendering beautifully on 4K monitors down to mobile screens.
 
 ---
 
