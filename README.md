@@ -1,21 +1,17 @@
 # 🚢 Titanic Survival Predictor (FastAPI + XGBoost + Glassmorphism UI)
-> **مشروع متكامل لتوقع فرصة النجاة من كارثة تيتانيك باستخدام الذكاء الاصطناعي وواجهة مستخدم عصرية.**
+> **A fully integrated Machine Learning system to predict Titanic survival passenger fate with high-accuracy modeling and a premium web application interface.**
 
 ---
 
-## 🌍 Introduction / مقدمة عن المشروع
+## 🌍 Project Overview
 
-### 🇬🇧 English
-On April 15, 1912, the luxury passenger liner RMS Titanic sank after colliding with an iceberg, resulting in the tragic deaths of 1502 out of 2224 passengers and crew. This classic machine learning project analyzes the historical passenger manifest to discover patterns among those who survived and those who did not, building a high-accuracy predictive model using **XGBoost** and exposing it through a modern, beautiful **FastAPI** web application.
-
-### 🇸🇦 العربية
-في 15 أبريل 1912، غرقت السفينة الأسطورية "تيتانيك" بعد اصطدامها بجبل جليدي، مما أدى إلى وفاة 1502 من أصل 2224 راكباً وملاحاً. هذا المشروع هو تطبيق عملي متكامل لعلوم البيانات وتعلم الآلة، حيث يقوم بتحليل بيانات ركاب السفينة التاريخية لاستخلاص الأنماط والخصائص التي حددت فرص نجاة الركاب، وبناء نموذج تنبؤي فائق الدقة باستخدام خوارزمية **XGBoost**، مع تقديم الخدمة عبر واجهة ويب تفاعلية وتصميم زجاجي (Glassmorphism) مذهل باستخدام **FastAPI**.
+On April 15, 1912, the luxury passenger liner RMS Titanic sank after colliding with an iceberg, resulting in the tragic deaths of 1502 out of 2224 passengers and crew. This project analyzes the historical passenger manifest to discover patterns among survivors, building a high-accuracy predictive model using **XGBoost** and exposing it through a high-performance **FastAPI** web application with a stunning Glassmorphism design.
 
 ---
 
-## 🛠️ Project Architecture / بنية المشروع
+## 🛠️ Project Architecture
 
-The project is structured into three main layers:
+The system is engineered in a decoupled, layered architecture:
 1. **Data Science & ML Pipeline (`Titanic.ipynb`)**: Performs Exploratory Data Analysis (EDA), missing value imputation, advanced feature engineering, hyperparameter tuning with `GridSearchCV`, and model serialization.
 2. **Backend API (`main.py`)**: Built with **FastAPI**, serving high-performance, robust, type-safe validation (using **Pydantic**) for single and batch predictions.
 3. **Premium Web Interface (`static/`)**: A state-of-the-art Single Page Application (SPA) designed with absolute visual excellence. Features glassmorphism cards, glowing ambient light orbs, CSS keyframe micro-animations, and full mobile responsiveness.
@@ -33,11 +29,11 @@ graph TD
 
 ---
 
-## 📊 Feature Engineering / هندسة الخصائص
+## 📊 Feature Engineering & Dataset Prep
 
 Advanced feature engineering was performed in the notebook to extract highly predictive features from the raw dataset, replacing low-value metadata:
 
-| Feature Name | Type | Description / الوصف | Transformation |
+| Feature Name | Type | Description | Transformation |
 | :--- | :--- | :--- | :--- |
 | **Pclass** | Categorical | Ticket class (1st, 2nd, 3rd) | Encoded & Scaled |
 | **Sex** | Categorical | Passenger gender | Label Encoded (0: Female, 1: Male) |
@@ -57,7 +53,7 @@ Advanced feature engineering was performed in the notebook to extract highly pre
 
 ---
 
-## 📈 Model Performance & Hyperparameters / أداء النموذج ودقة التنبؤ
+## 📈 Model Performance & Hyperparameters
 
 We leveraged the powerful **XGBoost Classifier** algorithm, which uses gradient boosted decision trees to achieve outstanding accuracy on tabular datasets.
 
@@ -94,7 +90,7 @@ weighted avg       0.83      0.83      0.83       179
 
 ---
 
-## 💻 Technical Stack & Tech Specifications / التقنيات المستخدمة
+## 💻 Technical Stack & Specs
 
 - **Machine Learning & Analysis:** Python, Jupyter Notebook, Pandas, NumPy, Scikit-Learn, XGBoost, Matplotlib, Seaborn, Joblib.
 - **Backend API:** FastAPI, Uvicorn, Pydantic, CORS Middleware.
@@ -102,7 +98,7 @@ weighted avg       0.83      0.83      0.83       179
 
 ---
 
-## 🚀 Getting Started & Installation / طريقة التشغيل والتركيب
+## 🚀 Getting Started & Installation
 
 Follow these steps to run the Titanic Survival Predictor on your local machine:
 
@@ -135,21 +131,21 @@ python -m uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 ### 5. Access the System
-- Open your browser and navigate to: **`http://127.0.0.1:8000`** to view the stunning predictive interface.
+- Open your browser and navigate to: **`http://127.0.0.1:8000`** to view the predictive interface.
 - Open the interactive API Documentation (Swagger UI) at: **`http://127.0.0.1:8000/docs`** to test endpoints directly.
 
 ---
 
-## 🗺️ API Endpoints Reference / مرجع نقاط اتصال الـ API
+## 🗺️ API Endpoints Reference
 
 ### `GET /`
-Serves the premium single-page web interface.
+Serves the web client interface.
 
 ### `GET /health`
 Returns system status (`{"status": "ok"}`).
 
 ### `GET /model/info`
-Returns metadata about the currently serialized XGBoost model, features, and encoders.
+Returns metadata about the serialized XGBoost model, features, and encoders.
 
 ### `POST /predict`
 Evaluates survival metrics for a single passenger.
@@ -176,18 +172,16 @@ Evaluates survival metrics for a single passenger.
 ```
 
 ### `POST /predict/batch`
-Accepts a JSON list containing up to 100 passengers to run automated high-speed batch predictions.
+Accepts a JSON list containing up to 100 passengers to run automated batch predictions.
 
 ---
 
-## 🎨 Design Highlights & Aesthetics / جماليات واجهة المستخدم
+## 👨‍💻 Developer & Author
 
-* **Glassmorphism Design Theme:** Rich frosted glass card overlays with semi-transparent borders using fine HSL gradients.
-* **Ambient Lighting:** Soft glowing gradient background orbs that pulse gently via CSS animations, creating a premium depth effect.
-* **Dynamic Probability Bar:** The survival probability scales smoothly with colored feedback (Green for Survived, Red for Perished).
-* **Responsive Layout:** Adaptive styling optimized for 4K desktop screens down to the smallest mobile devices.
+<p align="left">
+  <b>Saged Amr</b><br>
+  <i>Machine Learning & Full Stack Developer</i>
+</p>
 
----
-
-## 👥 Authors & Contribution / المساهمون
-Designed and engineered with care. Feel free to clone, star, or pull-request this repository!
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Saged00)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saged-amr/)
