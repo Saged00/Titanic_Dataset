@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 🚀 BACKEND API CONFIGURATION
     // Change this to your deployed Render/Railway backend URL once deployed (e.g., "https://your-backend.onrender.com")
     // Keep it as an empty string "" to use the local FastAPI server during development.
-    const API_BASE_URL = "";
+    const API_BASE_URL = "https://saged00-titanic-predictor-api.hf.space";
 
     const form = document.getElementById('prediction-form');
     const ageInput = document.getElementById('age');
