@@ -7,37 +7,6 @@
 
 On April 15, 1912, the luxury passenger liner RMS Titanic sank after colliding with an iceberg, resulting in the tragic deaths of 1502 out of 2224 passengers and crew. This project analyzes the historical passenger manifest to discover patterns among survivors, building a high-accuracy predictive model using **XGBoost** and exposing it through a high-performance **FastAPI** web application with a stunning Glassmorphism design.
 
----
-
-## 🛠️ Project Architecture & Data Flow
-
-The system is engineered using a decoupled, high-performance three-tier architecture that separates data processing, service delivery, and interface representation:
-
-```mermaid
-graph TD
-    %% Define Styles
-    classDef datasource fill:#2c3e50,stroke:#34495e,stroke-width:2px,color:#fff;
-    classDef training fill:#27ae60,stroke:#2ecc71,stroke-width:2px,color:#fff;
-    classDef model fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff;
-    classDef backend fill:#2980b9,stroke:#3498db,stroke-width:2px,color:#fff;
-    classDef frontend fill:#8e44ad,stroke:#9b59b6,stroke-width:2px,color:#fff;
-
-    %% Define Nodes
-    A[("📂 Titanic Dataset<br>(Titanic-Dataset.csv)")]:::datasource
-    B["🧪 Jupyter Notebook ML Pipeline<br>(Titanic.ipynb)"]:::training
-    C["💾 Serialized XGBoost Artifact<br>(titanic_model.pkl)"]:::model
-    D["⚡ FastAPI Backend Service<br>(main.py)"]:::backend
-    E["🎨 Premium Glassmorphism UI<br>(static/index.html)"]:::frontend
-
-    %% Define Connections
-    A -->|1. Raw Ingestion & EDA| B
-    B -->|2. GridSearch & Training| C
-    C -->|3. Model Deserialization| D
-    E -->|4. Async Prediction Request| D
-    D -->|5. Real-time Inference Payload| E
-
-    %% Graph Link Styles
-    linkStyle 0,1,2,3,4 stroke:#7f8c8d,stroke-width:2px,stroke-dasharray: 3;
 ```
 
 ### 🏛️ System Layers
